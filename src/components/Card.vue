@@ -2,7 +2,12 @@
   <div
     class="Card cursor-pointer border-black border-4 rounded-lg bg-slate-400 flex justify-center items-center w-full"
   >
-    <img v-if="flipped" :src="image" class="h-full w-full object-cover rounded" />
+    <img
+      v-if="selected || flipped"
+      :src="image"
+      class="h-full w-full object-cover rounded"
+      :class="{ grayscale: !flipped }"
+    />
     <p v-else class="text-6xl">{{ number }}</p>
   </div>
 </template>
@@ -10,9 +15,10 @@
 <script>
 export default {
   props: {
+    flipped: Boolean,
     image: String,
     number: Number,
-    flipped: Boolean
+    selected: Boolean
   }
 };
 </script>

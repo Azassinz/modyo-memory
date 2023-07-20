@@ -1,9 +1,5 @@
 <template>
-  <div v-if="!name">
-    <h1 class="text-5xl text-center my-3">Bienvenido al juego de Memorama!</h1>
-    <p class="text-lg">Introduce tu nombre para comenzar</p>
-    <input type="text" ref="nameInput" @keyup.lazy.enter="saveName" />
-  </div>
+  <WelcomePage v-if="!name" @saveName="saveName" />
   <div v-else>
     <div class="flex justify-evenly my-2">
       <p class="text-2xl font-medium text-green-600">Aciertos: {{ hits }}</p>
@@ -16,7 +12,8 @@
         class="h-full w-full rounded-lg"
         :image="image.url"
         :number="index + 1"
-        :flipped="matchedCards.includes(image.uuid) || selectedCards.includes(index)"
+        :selected="selectedCards.includes(index)"
+        :flipped="matchedCards.includes(image.uuid)"
         @click="selectedCards.length < 2 && selectedCards.push(index)"
       />
       <div
@@ -27,7 +24,7 @@
           class="bg-slate-400 border-black border-4 rounded-lg p-2 self-center"
           @click="restartGame"
         >
-          <p class="text-4xl font-medium self-center">Ganaste {{ name }}!</p>
+          <p class="text-4xl font-medium self-center">¡Ganaste {{ name }}!</p>
           <br />
           <p class="text-base font-medium">Jugar de nuevo</p>
         </button>
@@ -40,10 +37,12 @@
 import { ref, watch } from 'vue';
 
 import Card from './components/Card.vue';
+import WelcomePage from './components/WelcomePage.vue';
 
 export default {
   components: {
-    Card
+    Card,
+    WelcomePage
   },
   setup() {
     const nameInput = ref('');
@@ -62,8 +61,7 @@ export default {
       miss.value++;
     };
 
-    const saveName = () => {
-      const newName = nameInput.value.value;
+    const saveName = (newName) => {
       localStorage.name = newName;
       name.value = newName;
     };
@@ -110,7 +108,6 @@ export default {
       () => [...selectedCards.value],
       (currentValue) => {
         if (currentValue.length == 2) {
-          console.log(currentValue[0]);
           if (images.value[currentValue[0]].uuid === images.value[currentValue[1]].uuid) {
             increaseHits();
             matchedCards.value.push(images.value[currentValue[0]].uuid);
