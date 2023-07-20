@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #e5e7eb;
+}
+
+#app {
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  font-weight: normal;
+}
