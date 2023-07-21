@@ -6,7 +6,7 @@
       <p class="text-2xl font-medium text-red-600">Errores: {{ miss }}</p>
     </div>
     <div class="relative grid gap-2 grid-rows-auto grid-cols-4 md:grid-cols-5 justify-items-center">
-      <Card
+      <ImageCard
         v-for="(image, index) in images"
         :key="index"
         class="h-full w-full rounded-lg"
@@ -36,12 +36,12 @@
 <script>
 import { ref, watch } from 'vue';
 
-import Card from './components/Card.vue';
+import ImageCard from './components/ImageCard.vue';
 import WelcomePage from './components/WelcomePage.vue';
 
 export default {
   components: {
-    Card,
+    ImageCard,
     WelcomePage
   },
   setup() {

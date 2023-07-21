@@ -27,7 +27,7 @@
       autofocus
       placeholder="Nombre"
       required
-      @keyup.lazy.enter="emitName"
+      @keyup.enter="emitName"
     />
     <div class="absolute inset-x-0 bottom-0 mx-4">
       <p class="font-mono text-center">Desarrollado usando Vue.js y Tailwind CSS por David López</p>
