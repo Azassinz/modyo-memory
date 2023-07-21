@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 import ImageCard from './components/ImageCard.vue';
 import WelcomePage from './components/WelcomePage.vue';
@@ -73,21 +73,19 @@ export default {
       }
     };
 
-    const fecthImages = () => {
-      fetch(
+    const fecthImages = async () => {
+      const data = await fetch(
         'https://fed-team.modyo.cloud/api/content/spaces/animals/types/game/entries?per_page=20'
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          // clean entries to only work with the images data
-          let imagesArray = data.entries.map((entry) => entry.fields.image);
-          // shuffle so the game can be played with different images on each run
-          shuffleArray(imagesArray);
-          // get only first 10 images and duplicate them
-          imagesArray = imagesArray.slice(0, 10).flatMap((el) => [el, el]);
-          shuffleArray(imagesArray);
-          images.value = imagesArray;
-        });
+      ).then((response) => response.json());
+
+      // clean entries to only work with the images data
+      let imagesArray = data.entries.map((entry) => entry.fields.image);
+      // shuffle so the game can be played with different images on each run
+      shuffleArray(imagesArray);
+      // get only first 10 images and duplicate them
+      imagesArray = imagesArray.slice(0, 10).flatMap((el) => [el, el]);
+      shuffleArray(imagesArray);
+      images.value = imagesArray;
     };
 
     const restartGame = () => {
@@ -102,7 +100,9 @@ export default {
       name.value = localStorage.name;
     }
 
-    fecthImages();
+    onMounted(() => {
+      fecthImages();
+    });
 
     watch(
       () => [...selectedCards.value],
