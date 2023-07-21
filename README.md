@@ -1,35 +1,28 @@
-# modyo-memory
+# Memory Game
 
-This template should help get you started developing with Vue 3 in Vite.
+This project consist of a small memory game where the rules are simple. 20 cards with an image are displayed "face down", there are only 10 different images, so the game consist on clicking each card to reveal the image and the find the matching cards. The game ends when all the cards are matched.
 
-## Recommended IDE Setup
+This project was built using Vue.js and Tailwind CSS.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Test project locally
 
-## Customize configuration
+1. First clone the GitHub repo
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+```sh
+git clone https://github.com/Azassinz/modyo-memory.git
+```
 
-## Project Setup
+2. Open the project directory
+
+3. Install the required dependencies
 
 ```sh
 npm install
 ```
-
-### Compile and Hot-Reload for Development
+ 4. Run the project
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+5. Navigate in the browser to this route to play the game: http://127.0.0.1:5173/
