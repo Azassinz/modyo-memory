@@ -26,3 +26,9 @@ npm run dev
 ```
 
 5. Navigate in the browser to this route to play the game: http://127.0.0.1:5173/
+
+6. To run unit tests in a new terminal run
+
+```sh
+npm run test
+```

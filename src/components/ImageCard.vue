@@ -7,8 +7,9 @@
       :src="image"
       class="h-full w-full rounded object-cover"
       :class="{ grayscale: !flipped }"
+      data-test="image"
     />
-    <p v-else class="text-6xl">{{ number }}</p>
+    <p v-else class="text-6xl" data-test="number">{{ number }}</p>
   </div>
 </template>
 

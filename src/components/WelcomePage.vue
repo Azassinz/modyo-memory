@@ -28,6 +28,7 @@
       placeholder="Nombre"
       required
       @keyup.enter="emitName"
+      data-test="input"
     />
     <div class="absolute inset-x-0 bottom-0 mx-4">
       <p class="text-center font-mono">Desarrollado usando Vue.js y Tailwind CSS por David López</p>
