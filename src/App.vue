@@ -1,11 +1,11 @@
 <template>
   <WelcomePage v-if="!name" @saveName="saveName" />
   <div v-else>
-    <div class="flex justify-evenly my-2">
+    <div class="my-2 flex justify-evenly">
       <p class="text-2xl font-medium text-green-600">Aciertos: {{ hits }}</p>
       <p class="text-2xl font-medium text-red-600">Errores: {{ miss }}</p>
     </div>
-    <div class="relative grid gap-2 grid-rows-auto grid-cols-4 md:grid-cols-5 justify-items-center">
+    <div class="grid-rows-auto relative grid grid-cols-4 justify-items-center gap-2 md:grid-cols-5">
       <ImageCard
         v-for="(image, index) in images"
         :key="index"
@@ -18,13 +18,13 @@
       />
       <div
         v-if="images.length && matchedCards.length == images.length / 2"
-        class="w-full z-10 absolute inset-0 bg-slate-100/50 flex justify-center"
+        class="absolute inset-0 z-10 flex w-full justify-center bg-slate-100/50"
       >
         <button
-          class="bg-slate-400 border-black border-4 rounded-lg p-2 self-center"
+          class="self-center rounded-lg border-4 border-black bg-slate-400 p-2"
           @click="restartGame"
         >
-          <p class="text-4xl font-medium self-center">¡Ganaste {{ name }}!</p>
+          <p class="self-center text-4xl font-medium">¡Ganaste {{ name }}!</p>
           <br />
           <p class="text-base font-medium">Jugar de nuevo</p>
         </button>

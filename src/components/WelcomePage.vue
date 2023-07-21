@@ -1,10 +1,10 @@
 <template>
-  <div class="md:w-2/4 mx-auto">
-    <h1 class="text-5xl text-center text-sky-950 font-medium my-3">
+  <div class="mx-auto md:w-2/4">
+    <h1 class="my-3 text-center text-5xl font-medium text-sky-950">
       ¡Bienvenido al juego de Memorama!
     </h1>
     <h2 class="font-mono text-xl text-sky-950">Reglas:</h2>
-    <ol class="list-disc list-inside text-base">
+    <ol class="list-inside list-disc text-base">
       <li>
         El jugador debe ir volteando las cartas intentando adivinar las cartas que se repiten.
       </li>
@@ -13,15 +13,15 @@
       <li>Si las cartas no coinciden, sumarás 1 punto de error en el marcador.</li>
       <li>Si las cartas coinciden, sumarás 1 punto de acierto en el marcador.</li>
       <li>
-        Las cartas que aciertes quedarán boca arriba, mientras que las cartas de error
-        volveran a quedar boca abajo.
+        Las cartas que aciertes quedarán boca arriba, mientras que las cartas de error volveran a
+        quedar boca abajo.
       </li>
     </ol>
-    <p class="font-mono text-lg text-center text-sky-950 mt-4">
+    <p class="mt-4 text-center font-mono text-lg text-sky-950">
       Introduce tu nombre y da enter para comenzar
     </p>
     <input
-      class="flex mx-auto my-2"
+      class="mx-auto my-2 flex"
       type="text"
       ref="nameInput"
       autofocus
@@ -30,8 +30,8 @@
       @keyup.enter="emitName"
     />
     <div class="absolute inset-x-0 bottom-0 mx-4">
-      <p class="font-mono text-center">Desarrollado usando Vue.js y Tailwind CSS por David López</p>
-      <div class="flex wrap justify-evenly">
+      <p class="text-center font-mono">Desarrollado usando Vue.js y Tailwind CSS por David López</p>
+      <div class="wrap flex justify-evenly">
         <VueIcon class="w-20" />
         <TailwindIcon class="w-20" />
       </div>

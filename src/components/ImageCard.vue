@@ -1,11 +1,11 @@
 <template>
   <div
-    class="Card cursor-pointer border-black border-4 rounded-lg bg-slate-400 flex justify-center items-center w-full"
+    class="Card flex w-full cursor-pointer items-center justify-center rounded-lg border-4 border-black bg-slate-400"
   >
     <img
       v-if="selected || flipped"
       :src="image"
-      class="h-full w-full object-cover rounded"
+      class="h-full w-full rounded object-cover"
       :class="{ grayscale: !flipped }"
     />
     <p v-else class="text-6xl">{{ number }}</p>
