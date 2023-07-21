@@ -28,6 +28,7 @@
       placeholder="Nombre"
       required
       @keyup.enter="emitName"
+      aria-label="Nombre"
       data-test="input"
     />
     <div class="absolute inset-x-0 bottom-0 mx-4">

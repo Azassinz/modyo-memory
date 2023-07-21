@@ -8,6 +8,7 @@
       class="h-full w-full rounded object-cover"
       :class="{ grayscale: !flipped }"
       data-test="image"
+      :alt="`${title} Card`"
     />
     <p v-else class="text-6xl" data-test="number">{{ number }}</p>
   </div>
@@ -19,7 +20,8 @@ export default {
     flipped: Boolean,
     image: String,
     number: Number,
-    selected: Boolean
+    selected: Boolean,
+    title: String
   }
 };
 </script>

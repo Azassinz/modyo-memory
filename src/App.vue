@@ -4,13 +4,20 @@
     <div class="my-2 flex justify-evenly">
       <p class="text-2xl font-medium text-green-600">Aciertos: {{ hits }}</p>
       <p class="text-2xl font-medium text-red-600">Errores: {{ miss }}</p>
+      <button class="rounded-md border-2 border-black" aria-label="Reiniciar juego" data-test="button" @click="restartGame">
+        <RestartIcon class="w-8" />
+      </button>
     </div>
-    <div class="grid-rows-auto relative grid grid-cols-4 justify-items-center gap-2 md:grid-cols-5">
+    <div
+      v-if="images.length"
+      class="grid-rows-auto relative grid grid-cols-4 justify-items-center gap-2 md:grid-cols-5"
+    >
       <ImageCard
         v-for="(image, index) in images"
         :key="index"
         class="h-full w-full rounded-lg"
         :image="image.url"
+        :title="image.title"
         :number="index + 1"
         :selected="selectedCards.includes(index)"
         :flipped="matchedCards.includes(image.uuid)"
@@ -30,6 +37,10 @@
         </button>
       </div>
     </div>
+    <div v-else class="my-12">
+      <p class="text-center text-3xl text-sky-950">Mezclando las cartas</p>
+      <p class="animate-ping text-center text-3xl text-sky-950">...</p>
+    </div>
   </div>
 </template>
 
@@ -38,10 +49,12 @@ import { onMounted, ref, watch } from 'vue';
 
 import ImageCard from './components/ImageCard.vue';
 import WelcomePage from './components/WelcomePage.vue';
+import RestartIcon from './components/icons/IconRestart.vue';
 
 export default {
   components: {
     ImageCard,
+    RestartIcon,
     WelcomePage
   },
   setup() {
